@@ -1,13 +1,18 @@
 const displayTime = () => {
   const dateTime = new Date();
-  const hours = dateTime.getHours();
-  const minutes = dateTime.getMinutes();
-  const seconds = dateTime.getSeconds();
-  const session = document.getElementById('session');
+  let hours = dateTime.getHours();
+  let minutes = dateTime.getMinutes();
+  let seconds = dateTime.getSeconds();
 
-  document.getElementById('hours').innerHTML = hours;
-  document.getElementById('minutes').innerHTML = minutes;
-  document.getElementById('seconds').innerHTML = seconds;
+  hours > 12 ? session = 'PM' : 'AM';
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  const time = `${hours} : ${minutes} : ${seconds} ${session}`;
+
+  document.getElementById('clock').innerHTML = time;
 }
 
 setInterval(displayTime);
